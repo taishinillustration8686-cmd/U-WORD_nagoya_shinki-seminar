@@ -381,6 +381,50 @@
         .speaker-section .sec-label { color: var(--gold); }
         .speaker-section .sec-title { color: var(--navy); }
 
+        /* 講師写真 + 氏名 レイアウト */
+        .speaker-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 48px;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 640px) {
+            .speaker-layout { grid-template-columns: 1fr; gap: 32px; }
+        }
+        .speaker-photo-col { position: relative; }
+        .speaker-photo-col::after {
+            content: '';
+            position: absolute;
+            top: 12px; left: 12px; right: -12px; bottom: -12px;
+            border: 3px solid var(--gold); border-radius: 14px; z-index: 0;
+        }
+        .speaker-sec-img {
+            position: relative; z-index: 1;
+            width: 100%; aspect-ratio: 3/4;
+            object-fit: cover; object-position: top;
+            border-radius: 12px; display: block;
+            box-shadow: 0 12px 40px rgba(13,43,94,.2);
+        }
+        .speaker-sec-badge {
+            position: absolute; top: -13px; left: 50%;
+            transform: translateX(-50%); z-index: 3;
+            background: var(--red); color: #fff;
+            font-size: .78rem; font-weight: 700;
+            padding: 6px 18px; border-radius: 22px; white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(230,57,70,.4);
+        }
+        .speaker-info-col {}
+        .speaker-kana-sec { color: var(--gray); font-size: .8rem; letter-spacing: .22em; margin-bottom: 4px; }
+        .speaker-name-sec {
+            font-size: clamp(1.8rem,4vw,2.6rem); font-weight: 900;
+            color: var(--navy); line-height: 1.2; margin-bottom: 8px;
+        }
+        .speaker-role-sec { color: var(--gold); font-size: .85rem; font-weight: 700; letter-spacing: .06em; margin-bottom: 20px; }
+        @media (max-width: 640px) {
+            .speaker-photo-col { max-width: 220px; margin: 0 auto; }
+        }
+
         .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
         @media (max-width: 560px) { .bio-grid { grid-template-columns: 1fr; } }
 
@@ -764,14 +808,25 @@
         <p class="sec-label fade-up" style="color:var(--gold);">SPEAKER</p>
         <h2 class="sec-title fade-up" style="color:var(--navy);">講師のご紹介</h2>
 
-        <div class="tags fade-up">
-            <span class="tag">🦀 カニ王子</span>
-            <span class="tag">北よしオーナー</span>
-            <span class="tag">お初天神</span>
-            <span class="tag">U+WORD超人気店</span>
-            <span class="tag">飲食・通販・バスツアー</span>
-            <span class="tag">観光大使</span>
-            <span class="tag">地域活性化</span>
+        <div class="speaker-layout">
+            <div class="speaker-photo-col fade-left">
+                <span class="speaker-sec-badge">🦀 カニ王子</span>
+                <img class="speaker-sec-img" src="assets/kani-oji.jpg" alt="北村晃一">
+            </div>
+            <div class="speaker-info-col fade-right">
+                <p class="speaker-kana-sec">きたむら こういち</p>
+                <h3 class="speaker-name-sec">北村 晃一</h3>
+                <p class="speaker-role-sec">創業明治12年 兵庫県香住 水産加工会社 5代目社長</p>
+                <div class="tags" style="justify-content:flex-start;">
+                    <span class="tag">🦀 カニ王子</span>
+                    <span class="tag">北よしオーナー</span>
+                    <span class="tag">お初天神</span>
+                    <span class="tag">U+WORD超人気店</span>
+                    <span class="tag">飲食・通販・バスツアー</span>
+                    <span class="tag">観光大使</span>
+                    <span class="tag">地域活性化</span>
+                </div>
+            </div>
         </div>
 
         <div class="bio-grid">
@@ -895,7 +950,7 @@
                 <span class="d-icon">💰</span>
                 <p class="d-label">FEE</p>
                 <p class="d-val">
-                    <span class="big" style="color:var(--gold);">500pt + 500円</span><br>
+                    <span class="big" style="color:var(--gold);">500円 + 500pt</span><br>
                     <span class="free-badge">未会員の方は無料</span>
                 </p>
             </div>
@@ -992,7 +1047,7 @@
         <h2 class="sec-title fade-up">さあ、一緒に参加しましょう</h2>
         <p class="cta-msg fade-up">
             <strong>未会員の方は参加費無料。</strong><br>
-            会員の方も 500pt + 500円 でご参加いただけます。<br>
+            会員の方も 500円 + 500pt でご参加いただけます。<br>
             「圧倒的な応援が残るお店」のつくり方を、この目で確かめてください。
         </p>
         <a href="https://form.os7.biz/f/b49b39bc/" class="btn-cta fade-up" target="_blank" rel="noopener">
